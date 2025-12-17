@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Aniversário, Duda!</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #e8f5ee, #b7e4c7, #ffffff);
+      font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
+      overflow: hidden;
+    }
+
+        .dog {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 16px 0;
+    border: 4px solid #95d5b2;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+            .minji {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 16px 0;
+    border: 4px solid #95d5b2;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+        .card {
+      background: white;
+      border-radius: 24px;
+      padding: 20px;
+      max-width: 380px;
+      max-height: 80vh;      /* limita a altura */
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      animation: pop 1s ease;
+      overflow-y: auto;      /* ativa scroll */
+    }
+
+    /* scrollbar estilizada (Chrome/Edge) */
+    .card::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .card::-webkit-scrollbar-thumb {
+      background: #95d5b2;   /* verde Phoning */
+      border-radius: 10px;
+    }
+
+    .card::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      color: #05BE37;
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    .groups {
+      margin: 16px 0;
+      font-weight: bold;
+      color: #6a4c93;
+    }
+
+    button {
+      margin-top: 20px;
+      background: #05BE37;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    button:hover {
+      background: #05BE37;
+      transform: scale(1.05);
+    }
+
+    .surprise {
+      display: none;
+      margin-top: 16px;
+      font-size: 1.05rem;
+      color: #333;
+    }
+
+    .emoji {
+      font-size: 1.6rem;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: pink;
+      animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+      from { transform: translateY(-100px) rotate(0deg); }
+      to { transform: translateY(100vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Phoning App</h1>
+
+    <img src="img/minji.jpg" alt="Minji" class="minji">
+    <p style="font-size:0.9rem;color:#777;margin-top:-4px;">Uma mensagem não lida de: Minji 🐻</p>
+    <p>Duda~ feliz aniversário 🎂</p>
+
+    <p>
+      Espero que hoje você receba muito amor e boas energias.<br />
+      Continue sendo essa pessoa gentil e brilhante do seu jeitinho<br />
+      A gente tá torcendo por você sempre! 화이팅!<br />
+    </p>
+
+    <button onclick="showSurprise()">Clique para desbloquear o bônus 🎁</button>
+
+    <div class="surprise" id="surprise">
+      <p class="emoji">Alguém especial também veio dar parabéns!</p>
+      <img src="img/cachorra.jpg" alt="PEPE" class="dog">
+      <p>
+        AU AU 🐶<br />
+        Minjidasilva, você me honrou esse ano.<br />
+        Receba a bênção da deusa PEPE ⚡⚡<br />
+        Você terá extrema sorte nos seus 22 anos! Pepe Deva Pepe Om
+      </p>
+      <p>Com carinho, da sua parceira de vampirismo que te ama muito</p>
+    </div>
+  </div>
+
+  <script>
+    function showSurprise() {
+      document.getElementById('surprise').style.display = 'block';
+      for (let i = 0; i < 30; i++) createConfetti();
+    }
+
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * window.innerWidth + 'px';
+      confetti.style.background = `hsl(${Math.random() * 360}, 100%, 75%)`;
+      confetti.style.animationDuration = 2 + Math.random() * 3 + 's';
+      document.body.appendChild(confetti);
+
+      setTimeout(() => confetti.remove(), 5000);
+    }
+  </script>
+
+</body>
+</html>
